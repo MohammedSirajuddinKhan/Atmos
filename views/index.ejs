@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Atmos</title>
+
+    <link rel="stylesheet" href="/style.css" />
+    <link
+  rel="icon"
+  type="image/png"
+  href="/images/favicon.png"
+/>
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <h1><img src="/images/favicon.png" alt="atmos-logo" style="height: 26px;width: 26px;"> Atmos</h1>
+
+      <form
+  action="<%= weather ? '/' : '/weather' %>"
+  method="<%= weather ? 'GET' : 'POST' %>"
+  class="weather-form"
+>
+
+  <input
+    type="text"
+    name="city"
+    placeholder="Enter city name..."
+    value="<%= weather ? weather.city : '' %>"
+    <%= weather ? 'readonly' : '' %>
+    required
+  />
+
+  <button type="submit">
+    <%= weather ? 'Refresh' : 'Search' %>
+  </button>
+
+</form>
+
+      <% if(error){ %>
+
+      <div class="error">
+        <%= error %>
+      </div>
+
+      <% } %>
+
+      <% if(weather){ %>
+
+      <div class="weather-card">
+
+        <div class="top-section">
+
+          <div>
+
+            <h2>
+              <%= weather.city %>,
+              <%= weather.region %>,
+              <%= weather.country %>
+            </h2>
+
+            <p class="updated">
+              Last Updated:
+              <%= weather.lastUpdated %>
+            </p>
+
+          </div>
+
+          <img
+            src="https:<%= weather.icon %>"
+            alt="weather-icon"
+          />
+
+        </div>
+
+        <div class="temperature-section">
+
+          <h3>
+            <%= weather.temperature %>°C
+          </h3>
+
+          <p class="description">
+            <%= weather.description %>
+          </p>
+
+        </div>
+
+        <div class="details">
+
+          <div class="detail-box">
+            <h4>🌡 Feels Like</h4>
+            <p><%= weather.feelsLike %>°C</p>
+          </div>
+
+          <div class="detail-box">
+            <h4>💧 Humidity</h4>
+            <p><%= weather.humidity %>%</p>
+          </div>
+
+          <div class="detail-box">
+            <h4>🌬 Wind Speed</h4>
+            <p><%= weather.windSpeed %> kph</p>
+          </div>
+
+          <div class="detail-box">
+            <h4>☁ Cloud Cover</h4>
+            <p><%= weather.cloud %>%</p>
+          </div>
+
+          <div class="detail-box">
+            <h4>🌧 Rain Status</h4>
+            <p><%= weather.rain %></p>
+          </div>
+
+          <div class="detail-box">
+            <h4>❄ Snow Status</h4>
+            <p><%= weather.snow %></p>
+          </div>
+
+          <div class="detail-box">
+            <h4>🕒 Day/Night</h4>
+            <p>
+              <%= weather.isDay ? "Day" : "Night" %>
+            </p>
+          </div>
+
+          <div class="detail-box">
+            <h4>🌍 Weather</h4>
+            <p><%= weather.description %></p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <% } %>
+
+    </div>
+
+  </body>
+</html>
