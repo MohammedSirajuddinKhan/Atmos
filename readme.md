@@ -16,7 +16,7 @@ This application allows users to search for any city worldwide and view real-tim
 
 🔗 **Live Website:**
 
-[Add Your Live Link Here](https://your-live-link.vercel.app)
+[Atmos live link](https://atmos-brown-six.vercel.app/)
 
 ---
 
